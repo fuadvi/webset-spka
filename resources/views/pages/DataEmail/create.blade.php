@@ -63,15 +63,22 @@
                         <input type="text" name="jabatan" id="jabatan" placeholder="masukan jabatan" value="{{ old('jabatan') }}" class="form-control">
                     </div>
 
-                    <div class="form-group d-inline-block col-sm-5">
+                    <div class="form-group d-inline-block col-sm-3">
                         <label for="gol">Golongan/Ruang</label>
                         <input type="text" name="gol" id="gol" placeholder="masukan gololngan" value="{{ old('gol') }}" class="form-control">
                     </div>
-                     <div class="form-group d-inline-block col-sm-6">
+                     <div class="form-group d-inline-block col-sm-4">
                         <label for="jenis">Jenis</label>
                         <select name="jenis" class="form-control">
                             <option value="Personal" class="">Personal</option>
                             <option value="Instansi" class="">Instansi</option>
+                        </select>
+                    </div>
+                     <div class="form-group d-inline-block col-sm-4">
+                        <label for="status">status</label>
+                        <select name="status" class="form-control">
+                            <option value="Aktif" class="">Aktif</option>
+                            <option value="Non Aktif" class="">Non Aktif</option>
                         </select>
                     </div>
 

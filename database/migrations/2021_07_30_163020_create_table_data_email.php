@@ -26,7 +26,7 @@ class CreateTableDataEmail extends Migration
             $table->date('tanggal');
             $table->string('jenis');
             $table->string('gol', 5);
-            // $table->string('status', 10);
+            $table->string('status', 10);
             $table->timestamps();
         });
     }

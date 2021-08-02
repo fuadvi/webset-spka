@@ -31,7 +31,7 @@
 
                     <div class="form-group">
                         <label for="ni">Nip</label>
-                        <input type="number" name="ni" id="ni" placeholder="masukan nama NIP/NHI" value="{{ $item->ni }}" class="form-control">
+                        <input type="number" name="ni" id="ni" placeholder="masukan nama NIP/NHI" disabled value="{{ $item->ni }}" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -64,15 +64,22 @@
                         <input type="text" name="jabatan" id="jabatan" placeholder="masukan jabatan" value="{{ $item->jabatan }}" class="form-control">
                     </div>
 
-                    <div class="form-group d-inline-block col-sm-5">
+                    <div class="form-group d-inline-block col-sm-3">
                         <label for="gol">Golongan/Ruang</label>
                         <input type="text" name="gol" id="gol" placeholder="masukan gololngan" value="{{ $item->gol }}" class="form-control">
                     </div>
-                     <div class="form-group d-inline-block col-sm-6">
+                     <div class="form-group d-inline-block col-sm-4">
                         <label for="jenis">Jenis</label>
                         <select name="jenis" class="form-control">
                             <option value="Personal" {{ $item->jenis == 'Personal' ? 'selected' : '' }}>Personal</option>
                             <option value="Instansi" {{ $item->jenis == 'Instansi' ? 'selected' : '' }}>Instansi</option>
+                        </select>
+                    </div>
+                     <div class="form-group d-inline-block col-sm-4">
+                        <label for="jenis">Jenis</label>
+                        <select name="jenis" class="form-control">
+                            <option value="Personal" {{ $item->status == 'Aktif' ? 'selected' : '' }}>Personal</option>
+                            <option value="Instansi" {{ $item->status == 'Non Aktif' ? 'selected' : '' }}>Instansi</option>
                         </select>
                     </div>
 
