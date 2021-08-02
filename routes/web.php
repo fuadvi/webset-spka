@@ -22,6 +22,7 @@ Route::prefix('/')
     ->middleware(['auth'])
     ->group(function () {
         Route::get('/', [DasboardController::class, 'index'])->name('/');
+        Route::get('/getDinas', [DataEmailController::class, 'getKd_dinas'])->name('kode');
         Route::resource('/spka', SkpaController::class);
         Route::resource('/data-email', DataEmailController::class);
     });

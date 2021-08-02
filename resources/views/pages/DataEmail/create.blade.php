@@ -23,44 +23,45 @@
             <div class="card-body">
                 <form action="{{ route('data-email.store') }}" method="POST">
                     @csrf
+                    <label for="Kd_dinas">Kode Dinas</label>
                     <div class="form-group">
-                        <label for="Kd_dinas">Kode Dinas</label>
-                        <input type="text" name="Kd_dinas" id="Kd_dinas" placeholder="masukan kode dinas" value="{{ old('Kd_dinas') }}" class="form-control">
+                        <input type="text" name="Kd_dinas" id="Kd_dinas" placeholder="masukan kode dinas" value="{{ old('Kd_dinas') }}" class="form-control d-inline-block col-sm-2">
+                        <span id="pesan" class=""></span>
                     </div>
 
                     <div class="form-group">
                         <label for="ni">Nip</label>
-                        <input type="number" name="ni" id="ni" placeholder="masukan nama NIP/NHI" value="{{ old('ni') }}" class="form-control">
+                        <input type="number" name="ni" id="cek" placeholder="masukan nama NIP/NHI" value="{{ old('ni') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="nama_p">Nama pengguna</label>
-                        <input type="text" name="nama_p" id="nama_p" placeholder="masukan nama pengguna" value="{{ old('nama_p') }}" class="form-control">
+                        <input type="text" name="nama_p" id="cek2" placeholder="masukan nama pengguna" value="{{ old('nama_p') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="gd">Gelar Depan</label>
-                        <input type="text" name="gd" id="gd" placeholder="masukan  gelar depan" value="{{ old('gd') }}" class="form-control">
+                        <input type="text" name="gd" id="cek3" placeholder="masukan  gelar depan" value="{{ old('gd') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="gb">Gelar Belakang</label>
-                        <input type="text" name="gb" id="gb" placeholder="masukan  gelar belakang" value="{{ old('gb') }}" class="form-control">
+                        <input type="text" name="gb" id="cek4" placeholder="masukan  gelar belakang" value="{{ old('gb') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="hp">Nomor Hp</label>
-                        <input type="number" name="hp" id="hp" placeholder="masukan  nomor HP" value="{{ old('hp') }}" class="form-control">
+                        <input type="number" name="hp" id="cek5" placeholder="masukan  nomor HP" value="{{ old('hp') }}" class="form-control">
                     </div>
 
                      <div class="form-group">
                         <label for="nama_e">Nama Email</label>
-                        <input type="email" name="nama_e" id="nama_e" placeholder="masukan  gelar belakang" value="{{ old('nama_e') }}" class="form-control">
+                        <input type="email" name="nama_e" id="cek7" placeholder="masukan  gelar belakang" value="{{ old('nama_e') }}" class="form-control">
                     </div>
 
                      <div class="form-group">
                         <label for="jabatan">Jabatan</label>
-                        <input type="text" name="jabatan" id="jabatan" placeholder="masukan jabatan" value="{{ old('jabatan') }}" class="form-control">
+                        <input type="text" name="jabatan" id="cek8" placeholder="masukan jabatan" value="{{ old('jabatan') }}" class="form-control">
                     </div>
 
                     <div class="form-group d-inline-block col-sm-3">
@@ -90,3 +91,46 @@
     </div>
     <!-- /.container-fluid -->
 @endsection
+
+
+@push('jquery')
+    <script src="{{ url('js/jquery.js') }}"></script>
+	<script>
+		$(document).ready(function () {
+			$('#Kd_dinas').blur(function () {
+				$('#pesan').html('<img style="margin-left:10px; width:10px" src="{{ url('img/loading.gif') }}">');
+				const Kd_dinas = $(this).val();
+                var disabled = $("#cek").prop('disabled');
+				$.ajax({
+					type: 'GET',
+					url: '{{ route('kode') }}',
+					data: 'Kd_dinas=' + Kd_dinas,
+					success: function (data) {
+                            $('#pesan').html(data);
+                            if (data == '&#10004; Kode Dinas tersedia') {
+                            $( "#cek" ).prop( "disabled", false );
+                            $( "#cek2" ).prop( "disabled", false );
+                            $( "#cek3" ).prop( "disabled", false );
+                            $( "#cek4" ).prop( "disabled", false );
+                            $( "#cek5" ).prop( "disabled", false );
+                            $( "#cek6" ).prop( "disabled", false );
+                            $( "#cek7" ).prop( "disabled", false );
+                            $( "#cek8" ).prop( "disabled", false );
+                                console.log(1);
+                            }else{
+                                $( "#cek" ).prop( "disabled", true );
+                            $( "#cek2" ).prop( "disabled", true );
+                            $( "#cek3" ).prop( "disabled", true );
+                            $( "#cek4" ).prop( "disabled", true );
+                            $( "#cek5" ).prop( "disabled", true );
+                            $( "#cek6" ).prop( "disabled", true );
+                            $( "#cek7" ).prop( "disabled", true );
+                            $( "#cek8" ).prop( "disabled", true );
+                            }
+					}
+				})
+
+			});
+		});
+	</script>
+@endpush

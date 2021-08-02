@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataEmail;
+use App\Models\Spka;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,18 @@ class DataEmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function getKd_dinas(Request $request)
+    {
+        $kd_dinas = Spka::where('Kd_dinas', '=', $request->Kd_dinas)->count();
+        if (!$kd_dinas == 1) {
+            return "&#10060; Kode Dinas tidak tersedia";
+        } else {
+            return "&#10004; Kode Dinas tersedia";
+        }
+    }
+
     public function index(Request $request)
     {
         $cari = $request->query('cari');
@@ -58,7 +71,10 @@ class DataEmailController extends Controller
             'jenis' => 'required',
             'gol' => 'required',
             // 'status' => 'required',
+        ], [
+            'Kd_dinas.required' => 'testes'
         ]);
+
         $data = $request->all();
         $data['tanggal'] = Carbon::now();
         DataEmail::create($data);

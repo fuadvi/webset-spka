@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Spka extends Model
 {
     use HasFactory;
+    // protected $primaryKey = 'Kd_dinas';
 
     protected $table = 'tb_dinas';
 
