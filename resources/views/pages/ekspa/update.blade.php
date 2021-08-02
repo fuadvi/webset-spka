@@ -26,7 +26,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="kd_dinas">Kode Dinas</label>
-                        <input type="text" name="Kd_dinas" id="Kd_dinas" placeholder="masukan kode dinas" value="{{ $item->Kd_dinas }}" class="form-control">
+                        <input type="text" name="Kd_dinas" id="Kd_dinas" placeholder="masukan kode dinas" value="{{ $item->Kd_dinas }}" disabled class="form-control">
                     </div>
 
                     <div class="form-group">

@@ -84,8 +84,8 @@ class SkpaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'Kd_dinas' => 'required|string',
-            'Nm_dinas' => 'required|string'
+            'Kd_dinas' => 'string',
+            'Nm_dinas' => 'string'
         ]);
 
         $data = $request->all();
