@@ -9,6 +9,8 @@ class Kontrol extends Model
 {
     use HasFactory;
 
+    protected $table = 'kontrol';
+
     protected $fillable = [
         'tgl', 'jam', 'server', 'deskripsi_masalah', 'kategori',
         'deskripsi_penyelesaian', 'koordinasi', 'ket'

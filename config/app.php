@@ -1,4 +1,6 @@
 <?php
+/* set default timezone */
+date_default_timezone_set("Asia/Jakarta");
 
 return [
 
@@ -67,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
