@@ -6,9 +6,9 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DATA SKPA</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Kontrol Masalah</h1>
             <a href="{{ route('kontrol.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data SKPA
+                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Kontrol Masalah
             </a>
         </div>
 
@@ -17,16 +17,30 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Kode Dinas</th>
-                            <th>Nama Dinas</th>
+                            <th>ID</th>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Server</th>
+                            <th>Deskripsi Masalah</th>
+                            <th>Kategori</th>
+                            <th>Deskripsi Penyelesaian</th>
+                            <th>Koordinasi</th>
+                            <th>Keterangan</th>
                             <th>Akasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($items as $item)
                             <tr>
-                                <td>{{ $item->Kd_dinas }}</td>
-                                <td>{{ $item->Nm_dinas}}</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->tgl }}</td>
+                                <td>{{ $item->jam}}</td>
+                                <td>{{ $item->server}}</td>
+                                <td>{{ $item->deskripsi_masalah}}</td>
+                                <td>{{ $item->kategori}}</td>
+                                <td>{{ $item->deskripsi_penyelesaian}}</td>
+                                <td>{{ $item->koordinasi}}</td>
+                                <td>{{ $item->ket}}</td>
                                 <td>
                                     <a href="{{ route('kontrol.edit',$item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>

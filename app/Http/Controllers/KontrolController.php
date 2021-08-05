@@ -104,7 +104,8 @@ class KontrolController extends Controller
 
         $data = $request->all();
         $data['tgl'] = Carbon::now();
-        $data['jam'] = Carbon::time('H:m:s');
+        $data['jam'] = date('H:i:s');
+
 
         $kontrol->fill($data);
         $kontrol->save();
@@ -121,5 +122,6 @@ class KontrolController extends Controller
     public function destroy($id)
     {
         Kontrol::findOrFail($id)->delete();
+        return redirect()->route('kontrol.index');
     }
 }

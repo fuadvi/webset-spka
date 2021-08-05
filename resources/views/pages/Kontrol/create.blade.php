@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label for="kategori">Kategori</label>
                         <select name="kategori" class="form-control">
-                            <option value="spam">mail.acehprov.go.id</option>
+                            <option value="spam">Spam</option>
                             <option value="server">server</option>
                         </select>
                     </div>
