@@ -33,6 +33,13 @@
           <span>DATA EMAIL</span></a>
       </li>
 
+      <!-- Nav Item - user -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('/user') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>DATA USER</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 

@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
- <div class="container-fluid">
+    <div class="container-fluid">
 
 
         <!-- Page Heading -->
@@ -39,7 +39,6 @@
                             <th>Jabatan Lengkap</th>
                             <th>Gol/Ruang</th>
                             <th>Tanggal Daftar</th>
-                            <th>Status</th>
                             <th>Akasi</th>
                         </tr>
                     </thead>
@@ -56,7 +55,6 @@
                                 <td>{{ $item->jabatan}}</td>
                                 <td>{{ $item->gol}}/{{ $item->jenis }}</td>
                                 <td>{{ $item->tanggal}}</td>
-                                <td>{{ $item->status}}</td>
                                 <td>
                                     <a href="{{ route('data-email.edit',$item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
@@ -85,5 +83,5 @@
             {{ $items->links() }}
         </div>
 
-        </div>
+    </div>
 @endsection

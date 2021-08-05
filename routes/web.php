@@ -3,6 +3,7 @@
 use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\DataEmailController;
 use App\Http\Controllers\SkpaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,9 @@ Route::prefix('/')
         Route::get('/getDinas', [DataEmailController::class, 'getKd_dinas'])->name('kode');
         Route::resource('/spka', SkpaController::class);
         Route::resource('/data-email', DataEmailController::class);
+
+        // user
+        Route::get('/user', [UserController::class, 'index'])->name('/user');
     });
 
 
