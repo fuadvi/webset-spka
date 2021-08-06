@@ -7,9 +7,11 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Kontrol Masalah</h1>
-            <a href="{{ route('kontrol.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Kontrol Masalah
-            </a>
+             @if (Auth::user()->level == 'admin')
+             <a href="{{ route('kontrol.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Kontrol Masalah
+             </a>
+            @endif
         </div>
 
         <div class="row">
@@ -26,7 +28,9 @@
                             <th>Deskripsi Penyelesaian</th>
                             <th>Koordinasi</th>
                             <th>Keterangan</th>
+                            @if (Auth::user()->level == 'admin')
                             <th>Akasi</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +45,7 @@
                                 <td>{{ $item->deskripsi_penyelesaian}}</td>
                                 <td>{{ $item->koordinasi}}</td>
                                 <td>{{ $item->ket}}</td>
+                                @if (Auth::user()->level == 'admin')
                                 <td>
                                     <a href="{{ route('kontrol.edit',$item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
@@ -54,6 +59,7 @@
                                         </button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>

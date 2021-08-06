@@ -7,9 +7,11 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">DATA SKPA</h1>
-            <a href="{{ route('spka.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data SKPA
-            </a>
+             @if (Auth::user()->level == 'admin')
+             <a href="{{ route('spka.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data SKPA
+             </a>
+            @endif
         </div>
 
         <div class="row">
@@ -19,7 +21,9 @@
                         <tr>
                             <th>Kode Dinas</th>
                             <th>Nama Dinas</th>
-                            <th>Akasi</th>
+                             @if (Auth::user()->level == 'admin')
+                                <th>Akasi</th>
+                             @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -27,19 +31,21 @@
                             <tr>
                                 <td>{{ $item->Kd_dinas }}</td>
                                 <td>{{ $item->Nm_dinas}}</td>
-                                <td>
-                                    <a href="{{ route('spka.edit',$item->id) }}" class="btn btn-info">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                    <form action="{{ route('spka.destroy',$item->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
+                                 @if (Auth::user()->level == 'admin')
+                                 <td>
+                                     <a href="{{ route('spka.edit',$item->id) }}" class="btn btn-info">
+                                         <i class="fa fa-pencil-alt"></i>
+                                     </a>
+                                     <form action="{{ route('spka.destroy',$item->id) }}" method="post" class="d-inline">
+                                         @csrf
+                                         @method('delete')
 
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                                         <button class="btn btn-danger">
+                                             <i class="fa fa-trash"></i>
+                                         </button>
+                                     </form>
+                                 </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>

@@ -19,9 +19,11 @@
             </div>
           </form>
 
+           @if (Auth::user()->level == 'admin')
             <a href="{{ route('data-email.create') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Email
             </a>
+            @endif
         </div>
 
         <div class="row">
@@ -39,7 +41,9 @@
                             <th>Jabatan Lengkap</th>
                             <th>Gol/Ruang</th>
                             <th>Tanggal Daftar</th>
-                            <th>Akasi</th>
+                             @if (Auth::user()->level == 'admin')
+                                <th>Akasi</th>
+                             @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -55,20 +59,22 @@
                                 <td>{{ $item->jabatan}}</td>
                                 <td>{{ $item->gol}}/{{ $item->jenis }}</td>
                                 <td>{{ $item->tanggal}}</td>
-                                <td>
-                                    <a href="{{ route('data-email.edit',$item->id) }}" class="btn btn-info">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
+                                 @if (Auth::user()->level == 'admin')
+                                 <td>
+                                     <a href="{{ route('data-email.edit',$item->id) }}" class="btn btn-info">
+                                         <i class="fa fa-pencil-alt"></i>
+                                     </a>
 
-                                    <form action="{{ route('data-email.destroy',$item->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
+                                     <form action="{{ route('data-email.destroy',$item->id) }}" method="post" class="d-inline">
+                                         @csrf
+                                         @method('delete')
 
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                                         <button class="btn btn-danger">
+                                             <i class="fa fa-trash"></i>
+                                         </button>
+                                     </form>
+                                 </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>
