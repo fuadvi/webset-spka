@@ -34,6 +34,10 @@ Route::prefix('/')
         Route::get('/user/{id}', [UserController::class, 'edit'])->name('user.edit');
         Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+        // ganti password
+        Route::get('/user/{id}', [UserController::class, 'newPassword'])->name('user.newPassword');
+        Route::put('/user/{id}', [UserController::class, 'chancgePassword'])->name('user.changePass');
     });
 
 

@@ -46,12 +46,14 @@
           <span>Data User</span></a>
       </li>
 
+      @if (Auth::user()->level == 'user')
       <!-- Nav Item - ganti password -->
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('/user') }}">
+        <a class="nav-link" href="{{ route('user.newPassword', Auth::user()->id) }}">
           <i class="fas fa-fw fa-sliders-h"></i>
           <span>Ganti Password</span></a>
       </li>
+      @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider">
