@@ -31,6 +31,9 @@ Route::prefix('/')
 
         // user
         Route::get('/user', [UserController::class, 'index'])->name('/user');
+        Route::get('/user/{id}', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
 

@@ -24,20 +24,33 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('spka.index') }}">
           <i class="fas fa-fw fa-building"></i>
-          <span>DATA SKPA</span></a>
+          <span>Data SKPA</span></a>
       </li>
       <!-- Nav Item - Email -->
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('data-email.index') }}">
           <i class="fas fa-fw fa-inbox"></i>
-          <span>DATA EMAIL</span></a>
+          <span>Data Email</span></a>
+      </li>
+      <!-- Nav Item - Email -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('kontrol.index') }}">
+          <i class="fas fa-fw fa-bug"></i>
+          <span>Data Kontrol Masalah</span></a>
       </li>
 
       <!-- Nav Item - user -->
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('/user') }}">
           <i class="fas fa-fw fa-users"></i>
-          <span>DATA USER</span></a>
+          <span>Data User</span></a>
+      </li>
+
+      <!-- Nav Item - ganti password -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('/user') }}">
+          <i class="fas fa-fw fa-sliders-h"></i>
+          <span>Ganti Password</span></a>
       </li>
 
       <!-- Divider -->

@@ -18,10 +18,14 @@
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>username</th>
+                            <th>nama</th>
+                            <th>nip</th>
                             <th>email</th>
+                            <th>jabatan</th>
+                            @if (Auth::user()->level == 'admin')
                             <th>level</th>
                             <th>Akasi</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -29,13 +33,16 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name}}</td>
+                                <td>{{ $item->nip}}</td>
                                 <td>{{ $item->email}}</td>
+                                <td>{{ $item->jabatan}}</td>
+                                @if (Auth::user()->level == 'admin')
                                 <td>{{ $item->level}}</td>
-                                {{-- <td>
-                                    <a href="{{ route('spka.edit',$item->id) }}" class="btn btn-info">
+                                <td>
+                                    <a href="{{ route('user.edit',$item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('spka.destroy',$item->id) }}" method="post" class="d-inline">
+                                    <form action="{{ route('user.destroy',$item->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
 
@@ -43,7 +50,8 @@
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
-                                </td> --}}
+                                </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>

@@ -15,4 +15,38 @@ class UserController extends Controller
             'items' => $items
         ]);
     }
+
+    public function edit($id)
+    {
+        $item = User::findOrFail($id);
+
+        return view('pages.user.update')->with([
+            'item' => $item
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'name' => 'string',
+            'jabatan' => 'string',
+            'level' => 'in:user,admin'
+        ]);
+
+        $item = User::findOrFail($id);
+        $data = $request->all();
+        $item->fill($data);
+        $item->save();
+
+        return redirect()->route('/user');
+    }
+
+    public function destroy($id)
+    {
+        $item = User::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('/user');
+    }
 }
