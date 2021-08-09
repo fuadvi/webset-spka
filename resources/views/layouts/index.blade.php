@@ -11,8 +11,8 @@
 
   <title>Dinas Kominfo Persandian</title>
 
+  @stack('style')
 @include('includes.style')
-@stack('jquery')
 
 </head>
 
@@ -83,6 +83,8 @@
   </div>
 
   @include('includes.script')
+  @stack('script')
+
 
 </body>
 

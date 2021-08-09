@@ -7,6 +7,7 @@ use App\Models\Spka;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
+use DataTables;
 
 class DataEmailController extends Controller
 {
@@ -35,18 +36,15 @@ class DataEmailController extends Controller
         return $pdf->stream();
     }
 
+    public function list()
+    {
+        return Datatables::of(DataEmail::all())->make(true);
+    }
+
     public function index(Request $request)
     {
-        $cari = $request->query('cari');
-        $item = DataEmail::query();
 
-        $item->when($cari, function ($query) use ($cari) {
-            return $query->whereRaw("ni LIKE '%" . $cari . "%'");
-        });
-
-        return view('pages.DataEmail.index')->with([
-            'items' => $item->latest()->simplePaginate(5)
-        ]);
+        return view('pages.DataEmail.index');
     }
 
     /**
