@@ -6,6 +6,7 @@ use App\Models\DataEmail;
 use App\Models\Spka;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PDF;
 
 class DataEmailController extends Controller
 {
@@ -24,6 +25,14 @@ class DataEmailController extends Controller
         } else {
             return "&#10004; Kode Dinas tersedia";
         }
+    }
+
+    public function generatePDF()
+    {
+        $data = DataEmail::all();
+
+        $pdf = PDF::loadView('myPDF', ['data' => $data]);
+        return $pdf->stream();
     }
 
     public function index(Request $request)
@@ -67,10 +76,8 @@ class DataEmailController extends Controller
             'hp' => 'required|integer',
             'nama_e' => 'required|email',
             'jabatan' => 'required',
-            // 'tanggal' => 'required|date',
             'jenis' => 'required',
             'gol' => 'required',
-            // 'status' => 'required',
         ], [
             'Kd_dinas.required' => 'testes'
         ]);
@@ -123,10 +130,8 @@ class DataEmailController extends Controller
             'hp' => 'required|integer',
             'nama_e' => 'required|email',
             'jabatan' => 'required',
-            // 'tanggal' => 'required|date',
             'jenis' => 'required',
             'gol' => 'required',
-            // 'status' => 'required',
         ]);
 
         $data = $request->all();

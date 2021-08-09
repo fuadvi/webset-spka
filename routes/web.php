@@ -40,9 +40,11 @@ Route::prefix('/')
         Route::put('/user/change/{id}', [UserController::class, 'chancgePassword'])->name('user.changePass');
     });
 
+Route::get('/view', [DataEmailController::class, 'generatePDF'])->name('view');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

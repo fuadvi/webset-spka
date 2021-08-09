@@ -20,8 +20,11 @@
           </form>
 
            @if (Auth::user()->level == 'admin')
-            <a href="{{ route('data-email.create') }}" class="btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route('data-email.create') }}" class="btn btn-sm btn-primary shadow-sm mr-2">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Email
+            </a>
+            <a href="{{ route('view') }}" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-download fa-sm text-white-50"></i> Download PDF
             </a>
             @endif
         </div>
