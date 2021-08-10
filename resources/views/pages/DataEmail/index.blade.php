@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@push('style')
+@push('jquery')
          <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -13,18 +13,6 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
-                   <!-- Topbar Search -->
-          {{-- <form action="{{ route('data-email.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" name="cari" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form> --}}
 
            @if (Auth::user()->level == 'admin')
             <a href="{{ route('data-email.create') }}" class="btn btn-sm btn-primary shadow-sm mr-2">
@@ -83,7 +71,8 @@ $(function() {
             { data: 'jabatan', name: 'jabatan' },
             { data: 'gol', name: 'gol' },
             { data: 'tanggal', name: 'tanggal' },
-            { data: 'status', name: 'status' }
+            { data: 'status', name: 'status' },
+            { data: 'action', name: 'action' },
         ]
     });
 });

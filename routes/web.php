@@ -26,8 +26,13 @@ Route::prefix('/')
         Route::get('/', [DasboardController::class, 'index'])->name('/');
         Route::get('/getDinas', [DataEmailController::class, 'getKd_dinas'])->name('kode');
         Route::resource('/spka', SkpaController::class);
+
         Route::get('list', [DataEmailController::class, 'list']);
+        Route::get('data-email/edit/{id}', [DataEmailController::class, 'edit']);
+        Route::get('data-email/hapus/{id}', [DataEmailController::class, 'destroy']);
         Route::resource('/data-email', DataEmailController::class);
+
+
         Route::resource('/kontrol', KontrolController::class);
 
         // user

@@ -11,7 +11,7 @@
 
   <title>Dinas Kominfo Persandian</title>
 
-  @stack('style')
+  @stack('jquery')
 @include('includes.style')
 
 </head>
