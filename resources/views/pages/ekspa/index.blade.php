@@ -1,16 +1,14 @@
 @extends('layouts.index')
 
 @section('content')
- <div class="container-fluid">
-
-
+    <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">DATA SKPA</h1>
-             @if (Auth::user()->level == 'admin')
-             <a href="{{ route('spka.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data SKPA
-             </a>
+                @if (Auth::user()->level == 'admin')
+                <a href="{{ route('spka.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data SKPA
+                </a>
             @endif
         </div>
 
@@ -60,5 +58,5 @@
             </div>
         </div>
 
-        </div>
+    </div>
 @endsection

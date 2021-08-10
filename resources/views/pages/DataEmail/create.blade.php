@@ -92,7 +92,6 @@
     <!-- /.container-fluid -->
 @endsection
 
-
 @push('jquery')
     <script src="{{ url('js/jquery.js') }}"></script>
 	<script>
