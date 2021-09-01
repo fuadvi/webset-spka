@@ -11,14 +11,14 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-           @if (Auth::user()->level == 'admin')
+            @if (Auth::user()->level == 'admin')
             <a href="{{ route('data-email.create') }}" class="btn btn-sm btn-primary shadow-sm mr-2">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Email
             </a>
+            @endif
             <a href="{{ route('view') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i> Download PDF
             </a>
-            @endif
         </div>
 
         <div class="row">
@@ -59,11 +59,9 @@
     <!-- App scripts -->
     <script>
     $(function() {
-        $('#email-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: 'list',
-            columns: [
+        var admin = 'admin'
+        var user = {{Auth::user()->level }}
+        let cols = [
                 { data: 'kd_dinas', name: 'kd_dinas' },
                 { data: 'ni', name: 'ni' },
                 { data: 'nama_p', name: 'nama_p' },
@@ -75,8 +73,17 @@
                 { data: 'gol', name: 'gol' },
                 { data: 'tanggal', name: 'tanggal' },
                 { data: 'status', name: 'status' },
-                { data: 'action', name: 'action' },
             ]
+
+            if ( user == admin) {
+                cols.push({data: 'action', name: 'action'})
+            }
+
+        $('#email-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: 'list',
+            columns:cols
         });
     });
 </script>
